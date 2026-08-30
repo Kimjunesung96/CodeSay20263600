@@ -1,0 +1,18 @@
+# Web Framework & Dashboard
+fastapi
+uvicorn
+streamlit
+requests
+
+# Data Processing & ML
+pandas
+numpy
+scikit-learn
+xgboost
+
+# Optimization (MILP)
+pulp
+
+# Utilities
+python-dotenv
+pytest
