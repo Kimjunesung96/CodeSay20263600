@@ -1,0 +1,9 @@
+# 데이터 안내
+
+nyc_yellow_taxi_sample.parquet 파일은 용량 문제로 리포에 포함하지 않았습니다.
+
+다운로드 httpswww1.nyc.govsitetlcabouttlc-trip-record-data.page
+(2026-01 Yellow Taxi Trip Records 선택)
+
+받은 후 이 폴더(dataraw)에 그대로 넣으면 됩니다.
+파일이 없어도 main.py 실행 시 가상 데이터로 자동 대체되어 정상 동작합니다.

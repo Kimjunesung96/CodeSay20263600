@@ -1,0 +1,1 @@
+<configuration><input><net-file value="3x3_grid.net.xml" /><route-files value="entities.rou.xml" /></input></configuration>
