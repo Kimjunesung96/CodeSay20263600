@@ -1,21 +1,24 @@
-
+1
 레포 클론
-새 컴퓨터에서 git clone <레포주소> 로 프로젝트를 받아요. 그 다음 cd 명령으로 프로젝트 폴더 안으로 들어갑니다.
+새 컴퓨터에서 git clone <레포주소> 로 프로젝트를 받고, cd로 폴더 안으로 들어갑니다.
 2
-Python 가상환경 생성
-python -m venv venv 로 가상환경을 만들고, Windows면 venv\Scripts\activate, Mac/Linux면 source venv/bin/activate 로 활성화해요. 파이썬 버전은 원래 개발 환경(3.12)에 맞추는 게 안전해요.
+Python 환경 + 패키지 설치
+python -m venv venv 로 가상환경 생성 후 venv\Scripts\activate 로 활성화. 그 다음 pip install -r requirements.txt 로 패키지 설치. GPU 컴퓨터면 pytorch.org에서 CUDA 버전 torch 설치 명령어를 따로 확인해서 설치.
 3
-requirements.txt 설치
-pip install -r requirements.txt 로 pandas, torch, xgboost, h3 등 패키지를 설치해요. GPU 컴퓨터면 pytorch.org에서 본인 CUDA 버전에 맞는 설치 명령어로 GPU 버전 torch를 설치하세요.
+SUMO 설치
+https://sumo.dlr.de/docs/Downloads.php 에서 Windows용 설치파일 받아서 설치. 기본 경로는 보통 C:\Program Files (x86)\Eclipse\Sumo 이고, netgenerate.exe 등이 그 안의 bin 폴더에 있는지 확인하세요.
 4
-SUMO 설치 (필수)
-sumolib/traci는 SUMO 프로그램 자체가 컴퓨터에 설치돼 있어야 동작해요. https://sumo.dlr.de 에서 SUMO를 설치하고, 환경변수 SUMO_HOME을 SUMO 설치 경로로 지정해야 module1_simulation의 시뮬레이션이 돌아가요.
+SUMO_HOME + Path 환경변수 등록 (GUI 필수)
+시작메뉴 → '환경 변수' 검색 → '계정의 환경 변수 편집'. 사용자 변수에 두 개 추가: (1) SUMO_HOME = C:\Program Files (x86)\Eclipse\Sumo (bin 제외한 루트), (2) 기존 Path 변수에 C:\Program Files (x86)\Eclipse\Sumo\bin 을 새 항목으로 추가. 반드시 GUI로 하세요 — PowerShell SetEnvironmentVariable("Machine")로 반복 실행하면 기존 Path가 중복으로 계속 느어나서 위험해요.
 5
-config.json / presets 확인
-config.json이 원하는 값으로 세팅돼 있는지, presets 폴더의 프리셋들이 잘 들어있는지 확인해요. config_gui.py로 값 조정 후 저장하면 돼요.
+VS Code 완전 재시작 (중요)
+설정 저장 후 VS Code와 열려있는 터미널/PowerShell을 모두 완전히 종료하고 새로 실행하세요. 환경변수는 새 프로세스부터 적용되기 때문에, 창만 새로 열면 안 되고 앱 자체를 끈고 켜야 해요.
 6
-실행
-python config_gui.py 로 GUI를 켜서 '플레이' 버튼 누르거나, 터미널에서 바로 python train.py (학습) → python main.py (전체 파이프라인) 순서로 실행하면 됩니다.
+설치 확인 (Get-Command 사용, where 아님)
+새 PowerShell에서 Get-Command netgenerate 를 칩니다. 경로가 띄야 성공입니다. 주의: PowerShell에서 where는 cmd.exe의 where.exe가 아니라 Where-Object의 별칭이라 항상 빈 결과가 나오며 실패로 보임. 반드시 Get-Command를 쓰거나, cmd.exe를 따로 열어 where를 쓰세요.
 7
+실행
+config.json / presets 값 확인 후 python config_gui.py 로 GUI를 켜서 '플레이' 버튼을 누르거나, 터미널에서 python train.py → python main.py 순서로 직접 실행하면 됩니다.
+8
 실데이터 다운로드 (선택)
-https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page 에서 2026-01 Yellow Taxi Trip Records(parquet)를 받아 data/raw/ 폴더에 nyc_yellow_taxi_sample.parquet 이름으로 넣으면 실데이터로 동작해요. 안 받아도 main.py가 가상 데이터로 자동 대체하니 없어도 실행은 됩니다.
+https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page 에서 Yellow Taxi Trip Records(parquet)를 받아 data/raw/nyc_yellow_taxi_sample.parquet 으로 넣으면 실데이터로 동작해요. 안 받아도 main.py가 가상 데이터로 자동 대체하니 없어도 실행은 됩니다.
