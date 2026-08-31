@@ -1,0 +1,21 @@
+
+레포 클론
+새 컴퓨터에서 git clone <레포주소> 로 프로젝트를 받아요. 그 다음 cd 명령으로 프로젝트 폴더 안으로 들어갑니다.
+2
+Python 가상환경 생성
+python -m venv venv 로 가상환경을 만들고, Windows면 venv\Scripts\activate, Mac/Linux면 source venv/bin/activate 로 활성화해요. 파이썬 버전은 원래 개발 환경(3.12)에 맞추는 게 안전해요.
+3
+requirements.txt 설치
+pip install -r requirements.txt 로 pandas, torch, xgboost, h3 등 패키지를 설치해요. GPU 컴퓨터면 pytorch.org에서 본인 CUDA 버전에 맞는 설치 명령어로 GPU 버전 torch를 설치하세요.
+4
+SUMO 설치 (필수)
+sumolib/traci는 SUMO 프로그램 자체가 컴퓨터에 설치돼 있어야 동작해요. https://sumo.dlr.de 에서 SUMO를 설치하고, 환경변수 SUMO_HOME을 SUMO 설치 경로로 지정해야 module1_simulation의 시뮬레이션이 돌아가요.
+5
+config.json / presets 확인
+config.json이 원하는 값으로 세팅돼 있는지, presets 폴더의 프리셋들이 잘 들어있는지 확인해요. config_gui.py로 값 조정 후 저장하면 돼요.
+6
+실행
+python config_gui.py 로 GUI를 켜서 '플레이' 버튼 누르거나, 터미널에서 바로 python train.py (학습) → python main.py (전체 파이프라인) 순서로 실행하면 됩니다.
+7
+실데이터 다운로드 (선택)
+https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page 에서 2026-01 Yellow Taxi Trip Records(parquet)를 받아 data/raw/ 폴더에 nyc_yellow_taxi_sample.parquet 이름으로 넣으면 실데이터로 동작해요. 안 받아도 main.py가 가상 데이터로 자동 대체하니 없어도 실행은 됩니다.
