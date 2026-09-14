@@ -25,3 +25,6 @@ networkx
 matplotlib
 seaborn
 tqdm
+
+
+stable-baselines3

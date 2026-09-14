@@ -112,8 +112,13 @@ class ConfigGUI:
    if blocking:return subprocess.run([sys.executable,path,*args],cwd=ROOT,env=self._env(),check=True)
    if os.name=="nt":
     # 새 콘솔에서 실행 후 끝나도 창이 자동으로 안 닫히게 cmd /k로 감쌈 (결과 다 보고 사용자가 직접 X 눌러야 닫힘)
-    cmd_args=["cmd","/k",sys.executable,path,*args]
-    subprocess.Popen(cmd_args,cwd=ROOT,env=self._env(),creationflags=subprocess.CREATE_NEW_CONSOLE);return True
+    # [수정] cmd.exe는 /k 뒤 문자열이 큰따옴표로 "시작"할 때만 자체 따옴표-개수 세기
+    # 특수 처리를 하는데, 이때 따옴표가 정확히 2개가 아니면(python.exe 경로 공백 +
+    # JSON 인자의 따옴표 등) 깨져서 "'C:\Program'은(는)..." 오류가 남.
+    # 맨 앞에 call 을 붙여 " 로 시작하지 않게 만들면 이 특수 처리 자체를 건너뛰어 안전함.
+    inner_cmd=subprocess.list2cmdline([sys.executable,path,*args])
+    full_cmd=f'cmd /k call {inner_cmd}'
+    subprocess.Popen(full_cmd,cwd=ROOT,env=self._env(),creationflags=subprocess.CREATE_NEW_CONSOLE);return True
    subprocess.Popen([sys.executable,path,*args],cwd=ROOT,env=self._env());return True
   except Exception as e:messagebox.showerror("실행 오류",str(e));return False
  def run_main(self):

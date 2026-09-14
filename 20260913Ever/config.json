@@ -16,7 +16,7 @@
   "num_auto_cars": 1,
   "num_obstacles": 2,
   "num_passengers": 10000,
-  "sim_start_hour": 10,
+  "sim_start_hour": 9,
   "sim_end_hour": 11,
   "passenger_wait_timeout": 500,
   "depart_jitter_sec": 300.0,
