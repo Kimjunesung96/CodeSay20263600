@@ -1,0 +1,1 @@
+<configuration><input><net-file value="grid.net.xml" /><route-files value="entities.rou.xml" /></input><processing><device.taxi.dispatch-algorithm value="greedy" /><device.taxi.idle-algorithm value="randomCircling" /><ignore-route-errors value="true" /><time-to-teleport value="300" /><no-warnings value="true" /></processing><time><end value="7200" /></time></configuration>
