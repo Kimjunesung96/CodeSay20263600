@@ -1,0 +1,14 @@
+# 모델 백업 (용량 문제로 제외)
+saved_models_backups/
+*.pkl
+*.joblib
+*.pt
+
+# 데이터 파일
+data/raw/*.csv
+data/*.csv
+
+# 기타
+__pycache__/
+*.pyc
+.env
