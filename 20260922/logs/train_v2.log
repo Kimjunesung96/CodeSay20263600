@@ -1,0 +1,21 @@
+[안내] config.json에서 설정값을 불러왔습니다.
+[캐시 사용] '강남역' → 강남역, 강남대로, 역삼1동, 강남구, 서울특별시, 06615, 대한민국
+[안내] '강남역' 좌표를 실시간 API(Nominatim)로 조회했습니다.
+[외부 관측 → 날씨] data\generated\external.csv → c:\Users\skrkt\Desktop\고급인공지능\2학기\12\20260916verMergeFinish\20260916verMergeFinish\data\external\weather_from_external.csv (2304행)
+[로그] 1개 파일, 18,205건, 2026-08-30 00:02:19 ~ 2026-09-06 23:55:45
+공간 인덱싱(H3 resolution=8 / Geohash 7자리) 변환 중... (18,205행)
+변환 완료! 0.06초, H3 셀 8개
+[외부 데이터] 날씨 파일 사용: weather_from_external.csv (2304시간, 2026-08-30 00:00:00 ~ 2026-09-06 23:55:00)
+[외부 데이터] 병합 완료: 결측 0.0% (tolerance 3h), 보간 0행
+시계열 파생변수 생성: lag 6개, rolling 3/6/1h(6칸), 지난주 동일칸(1008칸 전), 시간 피처 15개, 타겟 t+1~t+6
+  앞부분(lag/rolling 계산 불가) + 뒷부분(미래 타겟 없음) 96행 제거 → 9120행
+[피처 테이블] 9,120행 × 피처 34개, 셀 8개, 시간칸 1140개 (10min), 타겟 ['y_h1', 'y_h2', 'y_h3', 'y_h4', 'y_h5', 'y_h6']
+[학습] 7,296행 (< 2026-09-05 09:00:00), 테스트 1,824행, 피처 34개, 타겟 ['y_h1', 'y_h2', 'y_h3', 'y_h4', 'y_h5', 'y_h6']
+[테스트 전체] RMSE 1.5561 | MAE 1.0727 | MAPE 52.60% | WAPE 66.77%
+  y_h1: RMSE 1.5321  MAE 1.0571
+  y_h2: RMSE 1.5374  MAE 1.0529
+  y_h3: RMSE 1.5422  MAE 1.0586
+  y_h4: RMSE 1.5526  MAE 1.0671
+  y_h5: RMSE 1.5722  MAE 1.0939
+  y_h6: RMSE 1.5989  MAE 1.1068
+[저장] c:\Users\skrkt\Desktop\고급인공지능\2학기\12\20260916verMergeFinish\20260916verMergeFinish\saved_models\demand_v2.joblib (셀 8개, data_until=2026-09-06 22:50:00)
